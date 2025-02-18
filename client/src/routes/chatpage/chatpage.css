@@ -14,7 +14,7 @@
     justify-content: center;
 
     .chat{
-      width: 50%;
+      width: 60%;
       display: flex;
       flex-direction: column;
       gap: 20px;
