@@ -4,9 +4,6 @@ import { useEffect } from "react";
 import NewPrompt from "../../components/newPrompt/NewPrompt";
 
 const ChatPage = () => {
-
-  
-
   return (
     <div className="chatPage">
       <div className="wrapper">
