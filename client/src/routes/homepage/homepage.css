@@ -44,10 +44,13 @@
       border-radius: 20px;
       font-size: 14px;
       margin-top: 20px;
+      transition: all 0.3s ease-in-out;
 
       &:hover {
-        background-color: white;
-        color: #217bfe;
+        background-color: #217bfe;
+        color: white;
+        box-shadow: 0 0 15px rgba(33, 123, 254, 0.8),
+          0 0 30px rgba(33, 123, 254, 0.6);
       }
     }
   }
