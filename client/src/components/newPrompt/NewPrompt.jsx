@@ -58,11 +58,12 @@ const NewPrompt = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const text = e.target.text.value;
     if (!text) return;
     add(text);
+   
   };
 
   return (
