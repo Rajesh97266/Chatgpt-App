@@ -5,6 +5,8 @@ import UserChats from "./models/userChats.js";
 import Chat from "./models/chat.js";
 import cors from "cors";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import path from "path";
+import url, { fileURLToPath } from "url";
 
 const imagekit = new ImageKit({
   urlEndpoint: process.env.IMAGE_KIT_ENDPOINT,
@@ -13,6 +15,10 @@ const imagekit = new ImageKit({
 });
 
 const port = process.env.PORT || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 const app = express();
 
@@ -147,6 +153,13 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(401).send("Unauthenticated!");
 });
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+});
+
 
 app.listen(port, () => {
   connect();
