@@ -29,9 +29,20 @@ app.get("/api/upload", (req, res) => {
   res.send(result);
 });
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://chatgpt-app-clone-three.vercel.app",
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );

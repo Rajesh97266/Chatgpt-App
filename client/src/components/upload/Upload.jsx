@@ -5,9 +5,10 @@ import { IKContext, IKImage, IKUpload } from "imagekitio-react";
 
 const urlEndpoint = import.meta.env.VITE_IMAGE_KIT_ENDPOINT;
 const publicKey = import.meta.env.VITE_IMAGE_KIT_PUBLIC_KEY;
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 const authenticator = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/upload");
+    const response = await fetch(`${apiBaseUrl}/api/upload`);
 
     if (!response.ok) {
       const errorText = await response.text();
